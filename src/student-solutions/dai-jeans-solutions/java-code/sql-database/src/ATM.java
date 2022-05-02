@@ -1,5 +1,6 @@
 import java.util.Locale;
 import java.util.Scanner;
+import java.sql.*;
 public class ATM {
 
     public static void main(String[] args) throws Exception {
@@ -17,7 +18,7 @@ public class ATM {
             case 1:
                 response=atm.createCard();
                 break;
-
+                
             case 2:
                 response=atm.getBalance();
                 scan.close();
@@ -37,17 +38,29 @@ public class ATM {
                 response=atm.printStatement();
                 scan.close();
                 break;
-            case -1:
-                scan.close();
-                break;
-            
+                
             default:
                 System.out.println("Wrong choice");
                 break;
             }
+            try
+            {
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/atm2","root","45?:.4coD$");
+                Statement stnt=con.createStatement();
+                ResultSet rs=stnt.executeQuery("insert * FROM client");
+                while(rs.next())
+                {
+                    System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getInt(5)+" "+rs.getInt(6));
+                    
+                }
+                con.close();
 
-
-        
-    }
+            }
+            catch(Exception e)
+            {  
+                System.out.print(e);
+            }
+            
+        }
 }
 

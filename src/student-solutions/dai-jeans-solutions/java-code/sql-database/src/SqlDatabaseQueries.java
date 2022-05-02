@@ -1,3 +1,9 @@
+import java.util.Scanner;
+import javax.swing.*;
+import java.math.*;
+import java.sql.*;
+import java.sql.PreparedStatement;
+
 public class SqlDatabaseQueries {
 
     /**
@@ -10,7 +16,15 @@ public class SqlDatabaseQueries {
      * to perform a transaction with the ATM
      */
     public void showMenu()
-    {
+    { 
+        System.out.println("Welcome to I-LAB Bank");
+         Scanner scan = new Scanner(System.in); 
+         System.out.println("1. Create Card");
+         System.out.println("2. Get Balance");
+         System.out.println("3. Deposit ");
+         System.out.println("4. Withdraw");
+         System.out.println("5. Print Statement");
+
 
     }
 
@@ -23,8 +37,60 @@ public class SqlDatabaseQueries {
      */
     public boolean createCard()
     {
+        Scanner scan = new Scanner(System.in); 
+        //prompted to enter informtaion regarding individual.
+        System.out.println("----To create card, please enter your details----");
+        System.out.print("Enter ID Number: ");
+        int id = scan.nextInt();
+        System.out.print("Enter age: ");
+        int age = scan.nextInt();
+        scan.nextLine();
+        System.out.print("Enter first name: ");
+        String fname = scan.nextLine(); 
+        System.out.print("Enter last name: ");
+        String lname = scan.nextLine();  
+        System.out.print("Enter gender: ");
+        String gender = scan.nextLine();  
+        System.out.print("Enter Contact Address: ");
+        String address = scan.nextLine();
+
+        
+        String details = ("Name: "+fname+" "+lname);
+        String details2 = ("Gender: "+gender);
+        String details3 = ("Contact address: "+address);
+
+        System.out.println("Please confirm the following captured details are entered correctly");
+    
+        System.out.println("0 = yes;  1 = no;  2 = cancel");
+        int option = scan.nextInt();
+        do {
+            if(option == 0)
+            {
+                System.out.println("Your card has been successfully created!");
+                System.out.println(details);
+                System.out.println(details2);
+                System.out.println(details3);
+                break;
+
+            }
+            else if( option == 1)
+            {
+                System.out.println("You will be taken back to fill out details again");
+                break;
+                // **!!need to figure out how to go back to the beginning of the program!!!!!!   
+            }
+            else
+            {
+                System.out.println("You have cancelled. You will be taken to the main menue shortly");
+                break;
+            }
+        }
+        while(option <=2);
+        
+
         return false;
     }
+    
 
 
     /**
@@ -35,6 +101,7 @@ public class SqlDatabaseQueries {
      */
     public boolean addClient()
     {
+        
         return false;
     }
     
@@ -46,6 +113,8 @@ public class SqlDatabaseQueries {
      * @return
      */
     public boolean getBalance() {
+        int balance = 10000;
+        System.out.println("Your balance is: " + balance);
         return false;
     }
 
@@ -58,6 +127,11 @@ public class SqlDatabaseQueries {
      */
     public boolean deposit()
     {
+        Scanner scan = new Scanner(System.in); 
+        System.out.println("Enter deposit amount : ");
+        int deposit = scan.nextInt();
+        
+
         return false;
     }
 
@@ -67,7 +141,11 @@ public class SqlDatabaseQueries {
      * Add missing parameters
      * @return
      */
-    public boolean withDraw(){
+    public boolean withDraw()
+    {
+        Scanner scan = new Scanner(System.in); 
+        System.out.println("Enter withdraw amount : ");
+        int withdraw = scan.nextInt();
         return false;
     }
 
